@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "tsx":"./node_modules/.bin/tsc",
+    "tsx": "./node_modules/.bin/tsc",
     "test": "jest",
-    "app:start":"react-native run-android"
+    "app:start": "react-native run-android"
   },
   "dependencies": {
     "@types/react": "^16.8.23",

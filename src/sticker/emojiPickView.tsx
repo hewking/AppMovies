@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import Stickers from '../res/Stickers/sticker';
-import SegmentControl from './common/segmentControl';
-import { wScreen } from './util/screen';
+import Stickers from '../../res/Stickers/sticker';
+import SegmentControl from '../common/segmentControl';
+import { wScreen } from '../util/screen';
+import StickerManager from './stickerManager';
 
 interface Props {
   style: any;
@@ -46,14 +47,13 @@ export default class extends React.PureComponent<Props, State> {
       borderTopWidth: StyleSheet.hairlineWidth,
       borderTopColor: 'grey',
     };
-    const emojis = Object.values(Stickers).reduce((previous, current) => {
-      return previous.concat(current);
-    }).map((item, index) => { return { text: item.name, image: item.resource } });
+    const emojis = StickerManager.getInstance().getAllStickers()
+      .map((item, index) => { return { text: item.name, image: item.resource } });
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
     return (
       <View onLayout={this.onLayout} style={[styles.view, { height, width: this.state.width }
-      , { flexDirection: 'column', backgroundColor: "pink" }]}>
+        , { flexDirection: 'column', backgroundColor: "pink" }]}>
         {this.renderScrollView(collection)}
         <View style={[styles.tabview, tabStyle]}>
           {isValid && (
@@ -90,7 +90,7 @@ export default class extends React.PureComponent<Props, State> {
     return (
       <FlatList
         key={index}
-        style={[{ marginHorizontal: marginH, marginVertical: marginV },{backgroundColor:'#cacaca'}]}
+        style={[{ marginHorizontal: marginH, marginVertical: marginV }, { backgroundColor: '#cacaca' }]}
         data={obj}
         renderItem={this.renderItem}
         numColumns={numColumns}
@@ -128,7 +128,11 @@ export default class extends React.PureComponent<Props, State> {
     }
   }
 
-  private clickEmoji = (text) => {
+  private onCategoryChanged = () => {
+    // todo
+  }
+
+  private clickEmoji = (text: string) => {
     const { onPickEmoji } = this.props;
     if (onPickEmoji) {
       onPickEmoji(text, text === this.DeleteItem);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import EmojiPickView from './emojiPickView';
+import EmojiPickView from './sticker/emojiPickView';
 
 export default class StickerPickerView extends Component<any, any> {
 
