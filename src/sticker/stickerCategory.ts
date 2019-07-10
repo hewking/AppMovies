@@ -16,7 +16,7 @@ export default class StickerCategory {
         this.stickers = param.stickers;
         this.start = param.start;
         this.end = param.end;
-        this.pageCount = this.end - this.start + 1;
+        this.pageCount = this.end - this.start;
     }
 
     public getPageCount() {

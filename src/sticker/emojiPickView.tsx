@@ -1,5 +1,7 @@
 import React from 'react';
-import { FlatList, Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, ScrollView, StyleSheet
+  , TouchableOpacity, View,
+ToastAndroid } from 'react-native';
 import Stickers from '../../res/Stickers/sticker';
 import SegmentControl from '../common/segmentControl';
 import { wScreen } from '../util/screen';
@@ -17,10 +19,11 @@ interface Props {
 interface State {
   width: number;
   curIndex: number;
+  categoryCount: number;
 }
 
 
-export default class extends React.PureComponent<Props, State> {
+export default class EmojiPickView extends React.PureComponent<Props, State> {
 
   static defaultProps = {
     itemSize: 42,
@@ -37,6 +40,7 @@ export default class extends React.PureComponent<Props, State> {
     this.state = {
       width: wScreen - 40,
       curIndex: 0,
+      categoryCount: StickerManager.getInstance().getCagegorySizeByIndex(0),
     };
   }
 
@@ -51,6 +55,9 @@ export default class extends React.PureComponent<Props, State> {
       .map((item, index) => { return { text: item.name, image: item.resource } });
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
+    console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
+    const curIndex = StickerManager.getInstance().getCagegoryCurIndex(this.state.curIndex);
+    console.log(`EmojiPickView cuIndex: ${curIndex} categoryCount: ${this.state.categoryCount}`);
     return (
       <View onLayout={this.onLayout} style={[styles.view, { height, width: this.state.width }
         , { flexDirection: 'column', backgroundColor: "pink" }]}>
@@ -58,8 +65,8 @@ export default class extends React.PureComponent<Props, State> {
         <View style={[styles.tabview, tabStyle]}>
           {isValid && (
             <SegmentControl
-              length={collection.pages}
-              currentIndex={this.state.curIndex}
+              length={this.state.categoryCount}
+              currentIndex={curIndex}
             />
           )}
         </View>
@@ -120,16 +127,29 @@ export default class extends React.PureComponent<Props, State> {
 
   private onContentHorizontalScrollEnd = (event) => {
     const offsetX = event.nativeEvent.contentOffset.x;
-    const newIndex = Math.floor(offsetX / this.state.width);
+    const newIndex = Math.round(offsetX / this.state.width);
+    console.log('EmojiPickView offsetX : ' + offsetX
+      + " curIndex: " + this.state.curIndex
+      + " newIndex: " + newIndex + ' width: ' + this.state.width);
     if (newIndex !== this.state.curIndex) {
-      this.setState({
-        curIndex: newIndex,
-      });
+      if (StickerManager.getInstance().checkCategoryChanged(this.state.curIndex, newIndex)) {
+        this.onCategoryChanged();
+        this.setState({
+          curIndex: newIndex,
+          categoryCount: StickerManager.getInstance().getCagegorySizeByIndex(newIndex)
+        });
+      } else {
+        this.setState({
+          curIndex: newIndex,
+        });
+      }
     }
   }
 
   private onCategoryChanged = () => {
     // todo
+    ToastAndroid.show('EmojiPickView onCategoryChanged',ToastAndroid.SHORT);
+    console.log('EmojiPickView onCategoryChanged');
   }
 
   private clickEmoji = (text: string) => {
@@ -156,6 +176,7 @@ export default class extends React.PureComponent<Props, State> {
       const arr = emojis.slice(i * pageSize, (i + 1) * pageSize);
       dataArr.push(arr);
     }
+    console.log('dataSource pages: ' + pages);
     return { data: dataArr, numRows, numColumns, marginH, marginV, pageSize, pages };
   }
 

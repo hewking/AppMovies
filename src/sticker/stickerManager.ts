@@ -76,6 +76,9 @@ export default class StickerManager {
         return [];
     }
 
+    /**
+     * 获取当前index所在的category的pageCount
+     */
     public getCagegorySizeByIndex(index: number): number {
         return this.stickerCategories.map(category => {
             let size = 0;
@@ -89,6 +92,27 @@ export default class StickerManager {
             })
     }
 
+    /**
+     * 获取当前index所在的category的具体index [0,pageCount)
+     * @param index 
+     */
+    public getCagegoryCurIndex(index: number): number {
+        let tmp = 0;
+        for (let category of this.stickerCategories) {
+            if (category.checkInCategory(index)) {
+                // -1 的原因是因为index 是从0开始计数
+                // 跨多个category 也只用减一次就可以
+                // if (tmp > 0) {
+                //     tmp = tmp -1;
+                // }
+                return index - tmp;
+            } else {
+                tmp += category.getPageCount();
+            }
+        }
+        return 0;
+    }
+
     public getCagegoryPageCount(): number {
         return this.stickerCategories.map(category => {
             return category.getPageCount();
@@ -96,6 +120,19 @@ export default class StickerManager {
             .reduce((pre, cur) => {
                 return pre + cur;
             })
+    }
+
+    /**
+     * 判断是否category改变，如果curIndex,newIndex都在category
+     * 的 start,end之间，则没有改变，反之改变。
+     * true 改变，false未改变
+     * @param curIndex 
+     * @param newIndex 
+     */
+    public checkCategoryChanged(curIndex: number, newIndex: number): boolean {
+        return this.stickerCategories.some(category => {
+            return category.checkInCategory(curIndex) && !category.checkInCategory(newIndex);
+        })
     }
 
 
