@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import EmojiPickView from './emojiPickView';
+
+export default class StickerPickerView extends Component<any, any> {
+
+    render(): React.ReactNode {
+        return (<View style={styles.constainer}>
+            <EmojiPickView
+                style={styles.scrollView}
+                height={180}
+                itemSize={64}
+                onPickEmoji={(text, shouldDelte) => {
+
+                }}
+            />
+        </View>);
+    }
+
+}
+
+const styles = StyleSheet.create({
+    constainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    scrollView: {
+        margin: 50,
+        height: 300,
+        flexDirection: 'row',
+        backgroundColor: 'pink',
+    }
+});

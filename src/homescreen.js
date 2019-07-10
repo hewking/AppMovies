@@ -7,7 +7,8 @@ import DetailScreen from './DetailScreen'
 import AnimatedScreen from './FadeInView'
 import DemoListScreen from './DemoListScreen'
 import TimerDemo from "./TimerDemo";
-
+import Counter from './Counter';
+import StickerPickerView from './stickerPickerView';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({navigation}) => {
@@ -56,6 +57,9 @@ const AppNavigator = createStackNavigator({
   Animated : AnimatedScreen,
   DemoList : DemoListScreen,
   Timer : TimerDemo,
+  Counter,
+  StickerPickerView,
+  // StickerCategory,
 
 });
 

@@ -4,13 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "tsx":"./node_modules/.bin/tsc",
+    "test": "jest",
+    "app:start":"react-native run-android"
   },
   "dependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-native": "^0.60.0",
     "react": "16.8.3",
     "react-native": "0.59.0",
     "react-native-gesture-handler": "^1.1.0",
-    "react-navigation": "^3.3.2"
+    "react-navigation": "^3.3.2",
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
