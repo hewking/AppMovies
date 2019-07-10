@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, Image, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Stickers from '../res/Stickers/sticker';
 import SegmentControl from './common/segmentControl';
+import { wScreen } from './util/screen';
 
 interface Props {
   style: any;
@@ -16,6 +17,7 @@ interface State {
   width: number;
   curIndex: number;
 }
+
 
 export default class extends React.PureComponent<Props, State> {
 
@@ -32,13 +34,13 @@ export default class extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: 0,
+      width: wScreen - 100,
       curIndex: 0,
     };
   }
 
   render() {
-    const { style, tabViewHeight, key, height } = this.props;
+    const { tabViewHeight, key, height } = this.props;
     const tabStyle = {
       height: tabViewHeight,
       borderTopWidth: StyleSheet.hairlineWidth,
@@ -50,7 +52,8 @@ export default class extends React.PureComponent<Props, State> {
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
     return (
-      <View onLayout={this.onLayout} style={[styles.view, { height }, style, { flexDirection: 'row' }]}>
+      <View onLayout={this.onLayout} style={[styles.view, { height, width: this.state.width }
+      , { flexDirection: 'column', backgroundColor: "pink" }]}>
         {this.renderScrollView(collection)}
         <View style={[styles.tabview, tabStyle]}>
           {isValid && (
@@ -87,7 +90,7 @@ export default class extends React.PureComponent<Props, State> {
     return (
       <FlatList
         key={index}
-        style={{ marginHorizontal: marginH, marginVertical: marginV }}
+        style={[{ marginHorizontal: marginH, marginVertical: marginV },{backgroundColor:'#cacaca'}]}
         data={obj}
         renderItem={this.renderItem}
         numColumns={numColumns}
@@ -108,7 +111,7 @@ export default class extends React.PureComponent<Props, State> {
     }
     return (
       <TouchableOpacity onPress={this.clickEmoji.bind(this, text)}>
-        <View style={[styles.itemview, style]}>
+        <View style={[styles.itemview, style, { backgroundColor: 'skyblue' }]}>
           <Image style={styles.icon} source={image} />
         </View>
       </TouchableOpacity>
@@ -133,10 +136,10 @@ export default class extends React.PureComponent<Props, State> {
   }
 
   private onLayout = (event) => {
-    const { width } = event.nativeEvent.layout;
-    this.setState({
-      width,
-    });
+    // const { width } = event.nativeEvent.layout;
+    // this.setState({
+    //   width,
+    // });
   }
 
   private dataSource = (emojis) => {
@@ -195,7 +198,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 28,
-    height: 28,
+    width: 64,
+    height: 64,
   },
 });

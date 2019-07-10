@@ -8,8 +8,8 @@ export default class StickerPickerView extends Component<any, any> {
         return (<View style={styles.constainer}>
             <EmojiPickView
                 style={styles.scrollView}
-                height={180}
-                itemSize={64}
+                height={250}
+                itemSize={80}
                 onPickEmoji={(text, shouldDelte) => {
 
                 }}
@@ -26,8 +26,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     scrollView: {
-        margin: 50,
-        height: 300,
         flexDirection: 'row',
         backgroundColor: 'pink',
     }
