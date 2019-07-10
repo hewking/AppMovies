@@ -35,7 +35,7 @@ export default class extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: wScreen - 100,
+      width: wScreen - 40,
       curIndex: 0,
     };
   }
@@ -149,21 +149,11 @@ export default class extends React.PureComponent<Props, State> {
   private dataSource = (emojis) => {
     const [numColumns, marginH] = this.columnCount();
     const [numRows, marginV] = this.rowCount();
-    const pageSize = numColumns * numRows - 1;
-    const pages = Math.ceil(emojis.length / pageSize);
+    const pageSize = numColumns * numRows;
+    const pages = StickerManager.getInstance().getCagegoryPageCount();
     const dataArr: any[] = [];
     for (let i = 0; i < pages; i++) {
       const arr = emojis.slice(i * pageSize, (i + 1) * pageSize);
-      if (arr.length < pageSize) {
-        const gap = pageSize - arr.length;
-        for (let j = 0; j < gap; j++) {
-          arr.push({ text: this.PlaceholderItem });
-        }
-      }
-      // arr.push({
-      //   text: this.DeleteItem,
-      //   image: require('./image/emoji_delete.png'),
-      // });
       dataArr.push(arr);
     }
     return { data: dataArr, numRows, numColumns, marginH, marginV, pageSize, pages };
@@ -172,7 +162,8 @@ export default class extends React.PureComponent<Props, State> {
   private columnCount = () => {
     const width = this.state.width;
     const minMarginH = 15;
-    const numColumns = Math.floor((width - minMarginH * 2) / this.props.itemSize);
+    // const numColumns = Math.floor((width - minMarginH * 2) / this.props.itemSize);
+    const numColumns = 4;
     const marginH = (width - this.props.itemSize * numColumns) / 2;
     return [numColumns, marginH];
   }
@@ -180,7 +171,8 @@ export default class extends React.PureComponent<Props, State> {
   private rowCount = () => {
     const height = this.props.height - this.props.tabViewHeight;
     const minMarginV = 4;
-    const numRows = Math.floor((height - minMarginV * 2) / this.props.itemSize);
+    // const numRows = Math.floor((height - minMarginV * 2) / this.props.itemSize);
+    const numRows = 2;
     const marginV = (height - this.props.itemSize * numRows) / 2;
     return [numRows, marginV];
   }

@@ -8,7 +8,7 @@ const PlaceholderItem = '__emoji_pick_placeholder__';
 
 export default class StickerManager {
 
-    private static instance: StickerManager;
+    private static instance: StickerManager = new StickerManager();
 
     private constructor() {
         this.loadStickers();
@@ -26,16 +26,20 @@ export default class StickerManager {
     public loadStickers() {
         // 可以先clear
         for (const [key, value] of Object.entries(Stickers)) {
-            const start = this.stickerCategories.map(item => {
-                return item.getPageCount();
-            }).reduce((pre, cur) => {
-                return pre + cur;
-            })
+            let start = 0;
+            if (this.stickerCategories.length > 0) {
+                start = this.stickerCategories.map(item => {
+                    return item.getPageCount();
+                }).reduce((pre, cur) => {
+                    return pre + cur;
+                })
+            }
 
             // place holder
             const stickerArr = Array.from(value);
-            if (stickerArr.length < PAGE_SIZE) {
-                const gap = PAGE_SIZE - stickerArr.length;
+            const pageCount = Math.ceil(stickerArr.length / PAGE_SIZE);
+            if (stickerArr.length < pageCount * PAGE_SIZE) {
+                const gap = pageCount * PAGE_SIZE - stickerArr.length;
                 for (let j = 0; j < gap; j++) {
                     stickerArr.push({
                         name: PlaceholderItem,
@@ -44,7 +48,7 @@ export default class StickerManager {
                 }
             }
 
-            const size = Math.ceil(value.length / PAGE_SIZE);
+            const size = Math.ceil(stickerArr.length / PAGE_SIZE);
             const category = new StickerCategory({
                 category: key,
                 stickers: stickerArr,
@@ -54,11 +58,14 @@ export default class StickerManager {
             this.stickerCategories.push(category);
         }
 
-        console.log(`loadStickers ${JSON.stringify(this.stickerCategories)}`)
+        console.warn(`loadStickers ${JSON.stringify(this.stickerCategories)}`)
 
     }
 
     public getAllStickers(): StickerItem[] {
+        if (this.stickerCategories.length == 0) {
+            return [];
+        }
         return this.stickerCategories.map(cagegory => cagegory.getStickers()).reduce((pre, cur) => {
             return pre.concat(cur);
         })
@@ -68,5 +75,28 @@ export default class StickerManager {
 
         return [];
     }
+
+    public getCagegorySizeByIndex(index: number): number {
+        return this.stickerCategories.map(category => {
+            let size = 0;
+            if (category.checkInCategory(index)) {
+                size = category.getPageCount();
+            }
+            return size;
+        })
+            .reduce((pre, cur) => {
+                return pre + cur;
+            })
+    }
+
+    public getCagegoryPageCount(): number {
+        return this.stickerCategories.map(category => {
+            return category.getPageCount();
+        })
+            .reduce((pre, cur) => {
+                return pre + cur;
+            })
+    }
+
 
 }

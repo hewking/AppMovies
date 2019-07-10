@@ -27,4 +27,8 @@ export default class StickerCategory {
         return this.stickers;
     }
 
+    public checkInCategory(index:number): boolean {
+        return index >= this.start && index < this.end;
+    }
+
 }
