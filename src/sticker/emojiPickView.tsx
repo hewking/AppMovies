@@ -1,11 +1,13 @@
 import React from 'react';
-import { FlatList, Image, ScrollView, StyleSheet
+import {
+  FlatList, Image, ScrollView, StyleSheet
   , TouchableOpacity, View,
-ToastAndroid } from 'react-native';
-import Stickers from '../../res/Stickers/sticker';
+  ToastAndroid
+} from 'react-native';
 import SegmentControl from '../common/segmentControl';
+import CategoryControl from '../common/categoryControl';
 import { wScreen } from '../util/screen';
-import StickerManager from './stickerManager';
+import StickerManager, { PAGE_COLUMNs, PAGE_ROWS } from './stickerManager';
 
 interface Props {
   style: any;
@@ -48,16 +50,18 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const { tabViewHeight, key, height } = this.props;
     const tabStyle = {
       height: tabViewHeight,
-      borderTopWidth: StyleSheet.hairlineWidth,
-      borderTopColor: 'grey',
     };
     const emojis = StickerManager.getInstance().getAllStickers()
       .map((item, index) => { return { text: item.name, image: item.resource } });
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
-    console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
     const curIndex = StickerManager.getInstance().getCagegoryCurIndex(this.state.curIndex);
+    const categoryOrder = StickerManager.getInstance().getCategoryOrderByIndex(this.state.curIndex);
+    const categoryList = StickerManager.getInstance().getAllCategory()
+            .map(item => { return { name: item.getName(), image: item.getPoster() } })
+    console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
     console.log(`EmojiPickView cuIndex: ${curIndex} categoryCount: ${this.state.categoryCount}`);
+    console.log(`EmojiPickView categoryOrder: ${categoryOrder}`);
     return (
       <View onLayout={this.onLayout} style={[styles.view, { height, width: this.state.width }
         , { flexDirection: 'column', backgroundColor: "pink" }]}>
@@ -70,6 +74,15 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
             />
           )}
         </View>
+        <CategoryControl
+          style={{
+            borderTopWidth: StyleSheet.hairlineWidth,
+            borderTopColor: '#d6d6d6',
+          }}
+          curIndex={categoryOrder}
+          height={tabViewHeight}
+          categoryList={categoryList}
+        />
       </View>
     );
   }
@@ -148,7 +161,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
 
   private onCategoryChanged = () => {
     // todo
-    ToastAndroid.show('EmojiPickView onCategoryChanged',ToastAndroid.SHORT);
+    ToastAndroid.show('EmojiPickView onCategoryChanged', ToastAndroid.SHORT);
     console.log('EmojiPickView onCategoryChanged');
   }
 
@@ -184,7 +197,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const width = this.state.width;
     const minMarginH = 15;
     // const numColumns = Math.floor((width - minMarginH * 2) / this.props.itemSize);
-    const numColumns = 4;
+    const numColumns = PAGE_COLUMNs;
     const marginH = (width - this.props.itemSize * numColumns) / 2;
     return [numColumns, marginH];
   }
@@ -193,7 +206,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const height = this.props.height - this.props.tabViewHeight;
     const minMarginV = 4;
     // const numRows = Math.floor((height - minMarginV * 2) / this.props.itemSize);
-    const numRows = 2;
+    const numRows = PAGE_ROWS;
     const marginV = (height - this.props.itemSize * numRows) / 2;
     return [numRows, marginV];
   }

@@ -8,7 +8,7 @@ export default class StickerPickerView extends Component<any, any> {
         return (<View style={styles.constainer}>
             <EmojiPickView
                 style={styles.scrollView}
-                height={250}
+                height={280}
                 itemSize={80}
                 onPickEmoji={(text, shouldDelte) => {
 
