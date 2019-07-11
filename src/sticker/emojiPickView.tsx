@@ -28,7 +28,7 @@ interface State {
 export default class EmojiPickView extends React.PureComponent<Props, State> {
 
   static defaultProps = {
-    itemSize: 42,
+    itemSize: 64,
     tabViewHeight: 30,
   };
 
@@ -40,7 +40,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: wScreen - 40,
+      width: wScreen - 20,
       curIndex: 0,
       categoryCount: StickerManager.getInstance().getCagegorySizeByIndex(0),
     };
@@ -58,7 +58,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const curIndex = StickerManager.getInstance().getCagegoryCurIndex(this.state.curIndex);
     const categoryOrder = StickerManager.getInstance().getCategoryOrderByIndex(this.state.curIndex);
     const categoryList = StickerManager.getInstance().getAllCategory()
-            .map(item => { return { name: item.getName(), image: item.getPoster() } })
+      .map(item => { return { name: item.getName(), image: item.getPoster() } })
     console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
     console.log(`EmojiPickView cuIndex: ${curIndex} categoryCount: ${this.state.categoryCount}`);
     console.log(`EmojiPickView categoryOrder: ${categoryOrder}`);
@@ -88,11 +88,12 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   }
 
   private renderScrollView = (collection) => {
-    const { height } = this.props;
+    const { height, tabViewHeight } = this.props;
+    const viewHeight = height! - 2 * tabViewHeight!;
     return (
       <ScrollView
         ref={v => this.scrollView = v}
-        style={[styles.scrollview, { height }]}
+        style={[styles.scrollview, { height: viewHeight }]}
         automaticallyAdjustContentInsets={false}
         horizontal={true}
         pagingEnabled={true}
@@ -203,7 +204,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   }
 
   private rowCount = () => {
-    const height = this.props.height - this.props.tabViewHeight;
+    const height = this.props.height - this.props.tabViewHeight * 2;
     const minMarginV = 4;
     // const numRows = Math.floor((height - minMarginV * 2) / this.props.itemSize);
     const numRows = PAGE_ROWS;
