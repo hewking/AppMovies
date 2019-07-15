@@ -38,16 +38,17 @@ export default class StickerManager {
             }
 
             // place holder
-            const stickerArr = Array.from(value);
+            const stickerArr = Array.from(value).map(item => (Object.assign(item, { category: key })));
             const pageCount = Math.ceil(stickerArr.length / PAGE_SIZE);
             if (stickerArr.length < pageCount * PAGE_SIZE) {
-                const gap = pageCount * PAGE_SIZE - stickerArr.length;
-                for (let j = 0; j < gap; j++) {
-                    stickerArr.push({
-                        name: PlaceholderItem,
-                        resource: null,
-                    });
-                }
+              const gap = pageCount * PAGE_SIZE - stickerArr.length;
+              for (let j = 0; j < gap; j++) {
+                stickerArr.push({
+                  name: PlaceholderItem,
+                  category: key,
+                  resource: null,
+                });
+              }
             }
 
             const size = Math.ceil(stickerArr.length / PAGE_SIZE);

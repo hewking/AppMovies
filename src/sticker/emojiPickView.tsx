@@ -8,6 +8,7 @@ import SegmentControl from '../common/segmentControl';
 import CategoryControl from '../common/categoryControl';
 import { wScreen } from '../util/screen';
 import StickerManager, { PAGE_COLUMNs, PAGE_ROWS } from './stickerManager';
+import { StickerItem } from './stickerCategory';
 
 interface Props {
   style: any;
@@ -15,7 +16,7 @@ interface Props {
   height?: number;
   itemSize?: number;
   key?: string;
-  onPickEmoji: (text: string, shouldDelete: boolean) => void;
+  onPickEmoji: (text: StickerItem) => void;
 }
 
 interface State {
@@ -51,8 +52,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const tabStyle = {
       height: tabViewHeight,
     };
-    const emojis = StickerManager.getInstance().getAllStickers()
-      .map((item, index) => { return { text: item.name, image: item.resource } });
+    const emojis = StickerManager.getInstance().getAllStickers();
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
     const curIndex = StickerManager.getInstance().getCagegoryCurIndex(this.state.curIndex);
@@ -115,25 +115,25 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
         data={obj}
         renderItem={this.renderItem}
         numColumns={numColumns}
-        keyExtractor={item => item.text}
+        keyExtractor={item => item.name}
         showsVerticalScrollIndicator={false}
       />
     );
   }
 
   private renderItem = ({ item }) => {
-    const { text, image } = item;
+    const { name, resource } = item;
     const style = {
       width: this.props.itemSize,
       height: this.props.itemSize,
     };
-    if (text === this.PlaceholderItem) {
+    if (name === this.PlaceholderItem) {
       return <View style={style} />;
     }
     return (
-      <TouchableOpacity onPress={this.clickEmoji.bind(this, text)}>
+      <TouchableOpacity onPress={this.clickEmoji.bind(this, item)}>
         <View style={[styles.itemview, style, { backgroundColor: 'skyblue' }]}>
-          <Image style={styles.icon} source={image} />
+          <Image style={styles.icon} source={resource} />
         </View>
       </TouchableOpacity>
     );
@@ -166,10 +166,10 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     console.log('EmojiPickView onCategoryChanged');
   }
 
-  private clickEmoji = (text: string) => {
+  private clickEmoji = (item: StickerItem) => {
     const { onPickEmoji } = this.props;
     if (onPickEmoji) {
-      onPickEmoji(text, text === this.DeleteItem);
+      onPickEmoji(item);
     }
   }
 

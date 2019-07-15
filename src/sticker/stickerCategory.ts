@@ -1,6 +1,7 @@
 export interface StickerItem {
     name: string;
     resource: any;
+    category: string;
 }
 
 export default class StickerCategory {

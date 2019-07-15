@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, ToastAndroid } from 'react-native';
 import EmojiPickView from './sticker/emojiPickView';
+import { StickerItem } from './sticker/stickerCategory';
 
 export default class StickerPickerView extends Component<any, any> {
 
@@ -9,9 +10,9 @@ export default class StickerPickerView extends Component<any, any> {
             <EmojiPickView
                 style={styles.scrollView}
                 height={220}
-                itemSize={80}
-                onPickEmoji={(text, shouldDelte) => {
-
+                itemSize={90}
+                onPickEmoji={(category: StickerItem) => {
+                    ToastAndroid.show(JSON.stringify(category), ToastAndroid.SHORT);
                 }}
             />
         </View>);
