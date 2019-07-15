@@ -1,6 +1,7 @@
 export interface StickerItem {
     name: string;
     resource: any;
+    category: string;
 }
 
 export default class StickerCategory {
@@ -10,6 +11,7 @@ export default class StickerCategory {
     private start: number;
     private end: number;
     private pageCount: number;
+    private poster?: NodeRequire;
 
     public constructor(param: { category: string, stickers: StickerItem[], start: number, end: number }) {
         this.category = param.category;
@@ -17,6 +19,10 @@ export default class StickerCategory {
         this.start = param.start;
         this.end = param.end;
         this.pageCount = this.end - this.start;
+        // TODO 添加默认poster
+        if (param.stickers.length > 0) {
+            this.poster = param.stickers[0].resource;
+        }
     }
 
     public getPageCount() {
@@ -27,8 +33,16 @@ export default class StickerCategory {
         return this.stickers;
     }
 
-    public checkInCategory(index:number): boolean {
+    public checkInCategory(index: number): boolean {
         return index >= this.start && index < this.end;
+    }
+
+    public getName(): string {
+        return this.category;
+    }
+
+    public getPoster(): NodeRequire {
+        return this.poster!;
     }
 
 }

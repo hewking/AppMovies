@@ -1,7 +1,9 @@
 import Stickers from '../../res/Stickers/sticker';
 import StickerCategory, { StickerItem } from './stickerCategory';
 
-const PAGE_SIZE = 8;
+export const PAGE_COLUMNs = 4;
+export const PAGE_ROWS = 2;
+export const PAGE_SIZE = PAGE_COLUMNs * PAGE_ROWS;
 const DeleteItem = '__emoji_pick_delete__';
 const PlaceholderItem = '__emoji_pick_placeholder__';
 
@@ -36,16 +38,17 @@ export default class StickerManager {
             }
 
             // place holder
-            const stickerArr = Array.from(value);
+            const stickerArr = Array.from(value).map(item => (Object.assign(item, { category: key })));
             const pageCount = Math.ceil(stickerArr.length / PAGE_SIZE);
             if (stickerArr.length < pageCount * PAGE_SIZE) {
-                const gap = pageCount * PAGE_SIZE - stickerArr.length;
-                for (let j = 0; j < gap; j++) {
-                    stickerArr.push({
-                        name: PlaceholderItem,
-                        resource: null,
-                    });
-                }
+              const gap = pageCount * PAGE_SIZE - stickerArr.length;
+              for (let j = 0; j < gap; j++) {
+                stickerArr.push({
+                  name: PlaceholderItem,
+                  category: key,
+                  resource: null,
+                });
+              }
             }
 
             const size = Math.ceil(stickerArr.length / PAGE_SIZE);
@@ -72,7 +75,7 @@ export default class StickerManager {
     }
 
     public getPageStcikers(page: number): StickerItem[] {
-
+        // TODO
         return [];
     }
 
@@ -133,6 +136,41 @@ export default class StickerManager {
         return this.stickerCategories.some(category => {
             return category.checkInCategory(curIndex) && !category.checkInCategory(newIndex);
         })
+    }
+
+    /**
+     * 获取category 个数
+     */
+    public getCategoryCount(): number {
+        return this.stickerCategories.length;
+    }
+
+    public getAllCategory(): StickerCategory[] {
+        return this.stickerCategories;
+    }
+
+    public getCategoryByIndex(index: number): StickerCategory | null {
+        let tmp = 0;
+        for (let category of this.stickerCategories) {
+            if (category.checkInCategory(index)) {
+                return category;
+            } else {
+                tmp += category.getPageCount();
+            }
+        }
+        return null;
+    }
+
+    public getCategoryOrderByIndex(index: number): number {
+        let tmp = 0;
+        for (let i = 0 ; i < this.stickerCategories.length; i ++) {
+            if (this.stickerCategories[i].checkInCategory(index)) {
+                return i;
+            } else {
+                tmp += this.stickerCategories[i].getPageCount();
+            }
+        }
+        return 0;
     }
 
 

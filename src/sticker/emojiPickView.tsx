@@ -6,9 +6,11 @@ import {
 } from 'react-native';
 import Stickers from '../../res/Stickers/sticker';
 import SegmentControl from '../common/segmentControl';
+import CategoryControl from '../common/categoryControl';
 import { wScreen } from '../util/screen';
-import StickerManager from './stickerManager';
 import GridView from '../common/gridView';
+import StickerManager, { PAGE_COLUMNs, PAGE_ROWS } from './stickerManager';
+import { StickerItem } from './stickerCategory';
 
 interface Props {
   style: any;
@@ -16,7 +18,7 @@ interface Props {
   height?: number;
   itemSize?: number;
   key?: string;
-  onPickEmoji: (text: string, shouldDelete: boolean) => void;
+  onPickEmoji: (text: StickerItem) => void;
 }
 
 interface State {
@@ -29,7 +31,7 @@ interface State {
 export default class EmojiPickView extends React.PureComponent<Props, State> {
 
   static defaultProps = {
-    itemSize: 42,
+    itemSize: 64,
     tabViewHeight: 30,
   };
 
@@ -41,7 +43,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: wScreen - 40,
+      width: wScreen - 20,
       curIndex: 0,
       categoryCount: StickerManager.getInstance().getCagegorySizeByIndex(0),
     };
@@ -51,16 +53,17 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const { tabViewHeight, key, height } = this.props;
     const tabStyle = {
       height: tabViewHeight,
-      borderTopWidth: StyleSheet.hairlineWidth,
-      borderTopColor: 'grey',
     };
-    const emojis = StickerManager.getInstance().getAllStickers()
-      .map((item, index) => { return { text: item.name, image: item.resource } });
+    const emojis = StickerManager.getInstance().getAllStickers();
     const collection = this.dataSource(emojis);
     const isValid = this.state.width > 0;
-    console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
     const curIndex = StickerManager.getInstance().getCagegoryCurIndex(this.state.curIndex);
+    const categoryOrder = StickerManager.getInstance().getCategoryOrderByIndex(this.state.curIndex);
+    const categoryList = StickerManager.getInstance().getAllCategory()
+      .map(item => { return { name: item.getName(), image: item.getPoster() } })
+    console.log(`EmojiPickView true curIndex: ${this.state.curIndex}`);
     console.log(`EmojiPickView cuIndex: ${curIndex} categoryCount: ${this.state.categoryCount}`);
+    console.log(`EmojiPickView categoryOrder: ${categoryOrder}`);
     return (
       <View onLayout={this.onLayout} style={[styles.view, { height, width: this.state.width }
         , { flexDirection: 'column', backgroundColor: "pink" }]}>
@@ -73,16 +76,26 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
             />
           )}
         </View>
+        <CategoryControl
+          style={{
+            borderTopWidth: StyleSheet.hairlineWidth,
+            borderTopColor: '#d6d6d6',
+          }}
+          curIndex={categoryOrder}
+          height={tabViewHeight}
+          categoryList={categoryList}
+        />
       </View>
     );
   }
 
   private renderScrollView = (collection) => {
-    const { height } = this.props;
+    const { height, tabViewHeight } = this.props;
+    const viewHeight = height! - 2 * tabViewHeight!;
     return (
       <ScrollView
         ref={v => this.scrollView = v}
-        style={[styles.scrollview, { height }]}
+        style={[styles.scrollview, { height: viewHeight }]}
         automaticallyAdjustContentInsets={false}
         horizontal={true}
         pagingEnabled={true}
@@ -112,18 +125,18 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   }
 
   private renderItem = (item) => {
-    const { text, image } = item;
+    const { name, resource } = item;
     const style = {
       width: this.props.itemSize,
       height: this.props.itemSize,
     };
-    if (text === this.PlaceholderItem) {
+    if (name === this.PlaceholderItem) {
       return <View style={style} />;
     }
     return (
-      <TouchableOpacity onPress={this.clickEmoji.bind(this, text)}>
+      <TouchableOpacity onPress={this.clickEmoji.bind(this, item)}>
         <View style={[styles.itemview, style, { backgroundColor: 'skyblue' }]}>
-          <Image style={styles.icon} source={image} />
+          <Image style={styles.icon} source={resource} />
         </View>
       </TouchableOpacity>
     );
@@ -156,10 +169,10 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     console.log('EmojiPickView onCategoryChanged');
   }
 
-  private clickEmoji = (text: string) => {
+  private clickEmoji = (item: StickerItem) => {
     const { onPickEmoji } = this.props;
     if (onPickEmoji) {
-      onPickEmoji(text, text === this.DeleteItem);
+      onPickEmoji(item);
     }
   }
 
@@ -188,16 +201,16 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     const width = this.state.width;
     const minMarginH = 15;
     // const numColumns = Math.floor((width - minMarginH * 2) / this.props.itemSize);
-    const numColumns = 4;
+    const numColumns = PAGE_COLUMNs;
     const marginH = (width - this.props.itemSize * numColumns) / 2;
     return [numColumns, marginH];
   }
 
   private rowCount = () => {
-    const height = this.props.height - this.props.tabViewHeight;
+    const height = this.props.height - this.props.tabViewHeight * 2;
     const minMarginV = 4;
     // const numRows = Math.floor((height - minMarginV * 2) / this.props.itemSize);
-    const numRows = 2;
+    const numRows = PAGE_ROWS;
     const marginV = (height - this.props.itemSize * numRows) / 2;
     return [numRows, marginV];
   }
