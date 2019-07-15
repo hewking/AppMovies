@@ -1,11 +1,14 @@
 import React from 'react';
-import { FlatList, Image, ScrollView, StyleSheet
+import {
+  FlatList, Image, ScrollView, StyleSheet
   , TouchableOpacity, View,
-ToastAndroid } from 'react-native';
+  ToastAndroid
+} from 'react-native';
 import Stickers from '../../res/Stickers/sticker';
 import SegmentControl from '../common/segmentControl';
 import { wScreen } from '../util/screen';
 import StickerManager from './stickerManager';
+import GridView from '../common/gridView';
 
 interface Props {
   style: any;
@@ -92,22 +95,23 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     );
   }
 
-  private renderPage = (collection, obj, index) => {
+  private renderPage = (collection: any, obj: any, index: number) => {
     const { marginH, marginV, numColumns } = collection;
     return (
-      <FlatList
-        key={index}
-        style={[{ marginHorizontal: marginH, marginVertical: marginV }, { backgroundColor: '#cacaca' }]}
+      <GridView
+        // key={index}
+        style={[{ marginHorizontal: marginH, marginVertical: marginV }
+          , { backgroundColor: '#cacaca' }]}
         data={obj}
         renderItem={this.renderItem}
         numColumns={numColumns}
         keyExtractor={item => item.text}
-        showsVerticalScrollIndicator={false}
+      // showsVerticalScrollIndicator={false}
       />
     );
   }
 
-  private renderItem = ({ item }) => {
+  private renderItem = (item) => {
     const { text, image } = item;
     const style = {
       width: this.props.itemSize,
@@ -148,7 +152,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
 
   private onCategoryChanged = () => {
     // todo
-    ToastAndroid.show('EmojiPickView onCategoryChanged',ToastAndroid.SHORT);
+    ToastAndroid.show('EmojiPickView onCategoryChanged', ToastAndroid.SHORT);
     console.log('EmojiPickView onCategoryChanged');
   }
 
