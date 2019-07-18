@@ -56,6 +56,18 @@ export default class UpgradeDemo extends Component<any, State> {
             }));
         }, 3000);
 
+        /**
+         * ios 版本
+         * NativeModules.upgrade.upgrade('Apple ID',(msg) =>{  
+    if('YES' == msg) {  
+       //跳转到APP Stroe  
+       NativeModules.upgrade.openAPPStore('Apple ID');  
+    } else {  
+        Toast.show('当前为最新版本');  
+    }  
+})  
+         */
+
     }
 
 }
