@@ -9,7 +9,8 @@ export default class DemoListScreen extends Component {
             { key: '定时器', id: 1, route: 'Timer' },
             { key: '调试', id: 2, route: 'Debug' },
             { key: 'sticker', id: 3, route: 'StickerPickerView' },
-            { key: 'Counter', id: 4, route: 'Counter' }
+            { key: 'Counter', id: 4, route: 'Counter' },
+            { key: 'Chat', id: 5, route: 'Chat' },
         ]
     }
 
