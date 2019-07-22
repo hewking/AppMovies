@@ -14,6 +14,8 @@
     "react": "16.8.3",
     "react-native": "0.59.0",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-largelist-v3": "^3.0.14",
+    "react-native-spring-scrollview": "^2.0.22",
     "react-navigation": "^3.3.2",
     "typescript": "^3.5.3"
   },
