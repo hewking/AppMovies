@@ -11,6 +11,7 @@ export default class DemoListScreen extends Component {
             { key: 'sticker', id: 3, route: 'StickerPickerView' },
             { key: 'Counter', id: 4, route: 'Counter' },
             { key: '版本升级', id: 5, route: 'UpgradeDemo' },
+            { key: 'AudioDemo', id: 6, route: 'AudioDemo' },
         ]
     }
 

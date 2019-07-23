@@ -107,6 +107,14 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+          ndk {
+            // Specifies the ABI configurations of your native
+            // libraries Gradle should build and package with your APK.
+            abiFilters 'x86', 'armeabi', 'armeabi-v7a'
+            // ,'x86_64'
+            // ,'arm64-v8a'
+        }
     }
     splits {
         abi {
@@ -138,6 +146,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-sound')
+    implementation project(':react-native-audio')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
