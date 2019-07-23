@@ -132,7 +132,7 @@ class AudioExample extends Component {
       if (this.state.recording) {
         await this._stop();
       }
-
+      // /data/user/0/com.app/files/1563869333503.aac
       // These timeouts are a hacky workaround for some issues with react-native-sound.
       // See https://github.com/zmxv/react-native-sound/issues/89.
       setTimeout(() => {
