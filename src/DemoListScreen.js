@@ -12,6 +12,7 @@ export default class DemoListScreen extends Component {
             { key: 'Counter', id: 4, route: 'Counter' },
             { key: '版本升级', id: 5, route: 'UpgradeDemo' },
             { key: 'AudioDemo', id: 6, route: 'AudioDemo' },
+            { key: 'PanExample', id: 7, route: 'PanExample' },
         ]
     }
 

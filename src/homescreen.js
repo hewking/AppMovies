@@ -11,6 +11,7 @@ import Counter from './Counter';
 import StickerPickerView from './stickerPickerView';
 import UpgradeDemo from './upgradeDemo';
 import AudioDemo from './demo/AudioExample'
+import PanExample from './demo/svg/PanResponder';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({navigation}) => {
@@ -63,6 +64,7 @@ const AppNavigator = createStackNavigator({
   StickerPickerView,
   UpgradeDemo,
   AudioDemo,
+  PanExample
   // StickerCategory,
 
 });

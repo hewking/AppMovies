@@ -21,7 +21,7 @@ class AudioExample extends Component {
       paused: false,
       stoppedRecording: false,
       finished: false,
-      audioPath: AudioUtils.DocumentDirectoryPath + '/test.aac',
+      audioPath: AudioUtils.MusicDirectoryPath + '/test.aac',
       hasPermission: undefined,
     };
 
@@ -136,6 +136,7 @@ class AudioExample extends Component {
       // These timeouts are a hacky workaround for some issues with react-native-sound.
       // See https://github.com/zmxv/react-native-sound/issues/89.
       setTimeout(() => {
+        console.log('audioPath: ' + this.state.audioPath);
         var sound = new Sound(this.state.audioPath, '', (error) => {
           if (error) {
             console.log('failed to load the sound', error);
