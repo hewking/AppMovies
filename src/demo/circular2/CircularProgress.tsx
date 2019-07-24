@@ -2,15 +2,6 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import Svg, { Path, Circle } from 'react-native-svg'
 
-const styles = StyleSheet.create({
-    textView: {
-        position: 'absolute',
-        top: 0, left: 0, bottom: 0, right: 0,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
-
 function generateArc(percentage, radius) {
     if (percentage === 100) percentage = 99.999
     const a = percentage * 2 * Math.PI / 100 // angle (in radian) depends on percentage
@@ -56,3 +47,12 @@ const CircularProgress = ({
     </View>
 }
 export default CircularProgress
+
+const styles = StyleSheet.create({
+    textView: {
+        position: 'absolute',
+        top: 0, left: 0, bottom: 0, right: 0,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
