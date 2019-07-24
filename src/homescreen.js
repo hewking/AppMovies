@@ -14,6 +14,7 @@ import AudioDemo from './demo/AudioExample'
 import PanExample from './demo/svg/PanResponder';
 import SvgDemo from './demo/svg';
 import CircularProgress from './demo/circularProgress'
+import CircularDemo2 from './demo/circular2';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -68,7 +69,8 @@ const AppNavigator = createStackNavigator({
   AudioDemo,
   PanExample,
   SvgDemo,
-  CircularProgress
+  CircularProgress,
+  CircularDemo2
   // StickerCategory,
 
 });

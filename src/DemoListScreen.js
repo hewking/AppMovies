@@ -15,6 +15,7 @@ export default class DemoListScreen extends Component {
             { key: 'PanExample', id: 7, route: 'PanExample' },
             { key: 'SvgDemo', id: 8, route: 'SvgDemo' },
             { key: 'CircularProgress', id: 9, route: 'CircularProgress' },
+            { key: 'CircularDemo2', id: 10, route: 'CircularDemo2' },
         ]
     }
 
