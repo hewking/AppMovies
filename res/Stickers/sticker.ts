@@ -52,28 +52,28 @@ export default {
     ],
     Bunicorn: [{
         name: "F01",
-        resource: require("./Bunicorn-resized/F01.jpg"),
+        resource: require("./Bunicorn-resized/F01.gif"),
       },{
         name: "F02",
-        resource: require("./Bunicorn-resized/F02.jpg"),
+        resource: require("./Bunicorn-resized/F02.gif"),
       },{
         name: "F04",
-        resource: require("./Bunicorn-resized/F04.jpg"),
+        resource: require("./Bunicorn-resized/F04.gif"),
       },{
         name: "F05",
-        resource: require("./Bunicorn-resized/F05.jpg"),
+        resource: require("./Bunicorn-resized/F05.gif"),
       },{
         name: "F06",
-        resource: require("./Bunicorn-resized/F06.jpg"),
+        resource: require("./Bunicorn-resized/F06.gif"),
       },{
         name: "F07",
-        resource: require("./Bunicorn-resized/F07.jpg"),
+        resource: require("./Bunicorn-resized/F07.gif"),
       },{
         name: "F08",
-        resource: require("./Bunicorn-resized/F08.jpg"),
+        resource: require("./Bunicorn-resized/F08.gif"),
       },{
         name: "F11",
-        resource: require("./Bunicorn-resized/F11.jpg"),
+        resource: require("./Bunicorn-resized/F11.gif"),
       },{
         name: "F12",
         resource: require("./Bunicorn-resized/F12.jpg"),
