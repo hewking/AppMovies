@@ -6,7 +6,7 @@
 
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import CircularProgress from './CircularProgress.js'
+import CircularProgress from './CircularProgress'
 
 export default class CircularDemo2 extends Component {
   render() {

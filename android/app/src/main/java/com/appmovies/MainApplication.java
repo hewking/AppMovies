@@ -34,7 +34,6 @@ public class MainApplication extends Application implements ReactApplication {
             new SvgPackage(),
             new RNSoundPackage(),
             new ReactNativeAudioPackage(),
-            new RNGestureHandlerPackage(),
             new UpgradePackage()
       );
     }
