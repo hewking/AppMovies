@@ -4,10 +4,14 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.bolan9999.SpringScrollViewPackage;
+import com.horcrux.svg.SvgPackage;
+import com.zmxv.RNSound.RNSoundPackage;
+import com.rnim.rn.audio.ReactNativeAudioPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.appmovies.android_upgrade.UpgradePackage;
 import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
@@ -27,6 +31,11 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new SpringScrollViewPackage(),
             new RNGestureHandlerPackage()
+            new SvgPackage(),
+            new RNSoundPackage(),
+            new ReactNativeAudioPackage(),
+            new RNGestureHandlerPackage(),
+            new UpgradePackage()
       );
     }
 
