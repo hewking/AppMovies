@@ -14,7 +14,7 @@ export default class CircularDemo2 extends Component {
     return (
       <View style={styles.base}>
         <Text style={styles.text}>Curcular Progress</Text>
-        <CircularProgress size={110} percentage={percentage}>
+        <CircularProgress size={100} percentage={percentage}>
           <View>
             <Text>{percentage}%</Text>
           </View>
