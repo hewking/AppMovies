@@ -4,6 +4,7 @@ import Svg, { Path, Circle } from 'react-native-svg'
 import GestureTouchable from './gestureTouchable';
 import { Colors } from "../../util/designSystem";
 import { BaseProps } from '../../common/baseProps';
+import AudioController from '../../util/audioController';
 
 interface Props extends BaseProps {
     percentage: number;
@@ -40,7 +41,7 @@ const INTERVAL_HIGH = 16; // ms
 
 const PROGRESS_HIGH_PER = 0.0107;
 
-export default class CircularProgress extends Component<Props, State>{
+export default class RecordView extends Component<Props, State>{
 
     static defaultProps = {
         percentage: 40,
@@ -56,6 +57,7 @@ export default class CircularProgress extends Component<Props, State>{
     private time: number = 0;
     private timer: NodeJS.Timeout | null = null;
     private touchMoveFirst: boolean = false;
+    private audioController: AudioController;
 
     constructor(props: any) {
         super(props);
@@ -63,6 +65,7 @@ export default class CircularProgress extends Component<Props, State>{
             status: RecordStatus.TAKE,
             progress: 0,
         }
+        this.audioController = new AudioController();
     }
 
     render() {
@@ -72,6 +75,7 @@ export default class CircularProgress extends Component<Props, State>{
                 this.initRecordUI();
                 this.time = new Date().getTime();
                 this.touchMoveFirst = false;
+                this.audioController.start(this.onRecordOvertime);
                 console.log('onTouchStart');
             }}
             onTouchMove={(evt) => {
@@ -106,6 +110,9 @@ export default class CircularProgress extends Component<Props, State>{
                         this.props.onTakePhote();
                     }
                 }
+
+                this.audioController.reset();
+
                 this.changeState(RecordStatus.TAKE);
             }}
             ref={(ref) => {
@@ -153,6 +160,12 @@ export default class CircularProgress extends Component<Props, State>{
         }
     }
 
+    private onRecordOvertime = () => {
+        if (this.props.onRecordFinish) {
+          this.props.onRecordFinish(this.allow);
+        }
+      }
+
     private renderContent = () => {
         const { status } = this.state;
         switch (status) {
@@ -182,7 +195,8 @@ export default class CircularProgress extends Component<Props, State>{
                     d={`M${half} ${half} L${half} 0 ${this.generateArc(percentage, half)} Z`}
                     fill={donutColor}
                 />
-                {<Circle cx={half} cy={half} r={progressWidth} fill={fillColor} />}
+                {<Circle cx={half} cy={half} r={progressWidth} fill={blankColor} />}
+                {<Circle cx={half} cy={half} r={25} fill={fillColor} />}
             </Svg>
             <View style={styles.textView}>
                 {children}
@@ -200,8 +214,8 @@ export default class CircularProgress extends Component<Props, State>{
         let half = size / 2;
         return <View style={{ width: size, height: size }}>
             <Svg width={size} height={size}>
-                <Circle cx={half} cy={half} r={half * 0.5} fill={blankColor} />
-                {<Circle cx={half} cy={half} r={half * 0.4} fill={fillColor} />}
+                <Circle cx={half} cy={half} r={half * 0.7} fill={blankColor} />
+                {<Circle cx={half} cy={half} r={half * 0.55} fill={fillColor} />}
             </Svg>
         </View>
     }
