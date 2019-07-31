@@ -5,8 +5,8 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import CircularProgress from './CircularProgress'
+import { Platform, StyleSheet, Text, View, ToastAndroid } from "react-native";
+import RecordView from './recordView'
 
 export default class CircularDemo2 extends Component {
   render() {
@@ -14,11 +14,21 @@ export default class CircularDemo2 extends Component {
     return (
       <View style={styles.base}>
         <Text style={styles.text}>Curcular Progress</Text>
-        <CircularProgress size={100} percentage={percentage}>
+        <RecordView size={100} percentage={percentage}
+        // onRecordStart={() => {
+        //   ToastAndroid.show('onRecordStart', ToastAndroid.SHORT);
+        // }}
+        // onRecording={(isRecording) => {
+        //   ToastAndroid.show('onRecording', ToastAndroid.SHORT);
+        // }}
+        // onRecordFinish={(allow: boolean) => {
+        //   ToastAndroid.show('onRecordFinish', ToastAndroid.SHORT);
+        // }}
+        >
           <View>
             <Text>{percentage}%</Text>
           </View>
-        </CircularProgress>
+        </RecordView>
       </View>
     );
   }
