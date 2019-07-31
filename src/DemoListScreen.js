@@ -17,6 +17,7 @@ export default class DemoListScreen extends Component {
             { key: 'SvgDemo', id: 8, route: 'SvgDemo' },
             { key: 'CircularProgress', id: 9, route: 'CircularProgress' },
             { key: 'CircularDemo2', id: 10, route: 'CircularDemo2' },
+            { key: 'LargeListScreen', id: 11, route: 'LargeListScreen' },
         ]
     }
 
@@ -24,12 +25,12 @@ export default class DemoListScreen extends Component {
         return (<View style={styles.contaner}>
             <FlatList
                 data={this.getData()}
-                renderItem={({ item }) => this.bindItem(item)}
+                renderItem={this.bindItem}
             />
         </View>)
     }
 
-    bindItem(item) {
+    bindItem({ item }) {
         return (<View style={styles.list}>
             <Button title={item.key} onPress={() => {
                 this.props.navigation.navigate(item.route, {

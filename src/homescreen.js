@@ -16,6 +16,7 @@ import PanExample from './demo/svg/PanResponder';
 import SvgDemo from './demo/svg';
 import CircularProgress from './demo/circularProgress'
 import CircularDemo2 from './demo/circular2';
+import LargeListScreen from './largelistView';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -66,7 +67,7 @@ const AppNavigator = createStackNavigator({
   Timer: TimerDemo,
   Counter,
   StickerPickerView,
-  Chat:ChatExample,
+  Chat: ChatExample,
   UpgradeDemo,
   AudioDemo,
   PanExample,
