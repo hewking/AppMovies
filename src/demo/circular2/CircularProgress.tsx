@@ -44,9 +44,9 @@ export default class CircularProgress extends Component<Props, State>{
 
     static defaultProps = {
         percentage: 40,
-        blankColor: "#eaeaea",
-        donutColor: "#43cdcf",
-        fillColor: "white",
+        blankColor: "#ffffff7d",
+        donutColor: "#4AB9F0",
+        fillColor: "#ffffff7d",
         progressWidth: 45,
         size: 100,
     };
@@ -184,9 +184,9 @@ export default class CircularProgress extends Component<Props, State>{
                 />
                 {<Circle cx={half} cy={half} r={progressWidth} fill={fillColor} />}
             </Svg>
-            <View style={styles.textView}>
+            {/* <View style={styles.textView}>
                 {children}
-            </View>
+            </View> */}
         </View>
     }
 
