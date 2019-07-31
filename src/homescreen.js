@@ -73,7 +73,8 @@ const AppNavigator = createStackNavigator({
   PanExample,
   SvgDemo,
   CircularProgress,
-  CircularDemo2
+  CircularDemo2,
+  LargeListScreen
   // StickerCategory,
 
 });

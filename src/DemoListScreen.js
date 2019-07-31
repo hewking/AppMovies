@@ -30,7 +30,7 @@ export default class DemoListScreen extends Component {
         </View>)
     }
 
-    bindItem({ item }) {
+    bindItem = ({ item }) => {
         return (<View style={styles.list}>
             <Button title={item.key} onPress={() => {
                 this.props.navigation.navigate(item.route, {

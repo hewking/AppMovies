@@ -22,6 +22,7 @@ export default class LargeListScreen extends Component<any, State> {
             <RefreshFlatList
                 style={styles.list}
                 data={this.state.datas}
+                enableLoadMore={true}
                 onFooterRefresh={this.loadMore}
                 onHeadRefresh={this.refresh}
                 renderItem={this.renderItem}
@@ -41,16 +42,19 @@ export default class LargeListScreen extends Component<any, State> {
 
     private createDatas = () => {
         const items: string[] = [];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             items.push(`text ${this.mPage * 10 + i}`);
         }
         return items;
     };
 
     private loadMore = () => {
-        this.setState((prevState => {
-            datas: prevState.datas.concat(this.createDatas())
-        }));
+        console.log('largelist loadmore');
+        setTimeout(() => {
+            this.setState(prevState => ({
+                datas: prevState.datas.concat(this.createDatas())
+            }));
+        }, 1000);
     }
 
     private refresh = () => {

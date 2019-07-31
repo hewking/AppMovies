@@ -1,8 +1,9 @@
-import React, {Component} from "react";
-import {FlatList, ListRenderItem, StyleSheet} from "react-native";
+import React, { Component } from "react";
+import { FlatList, ListRenderItem, StyleSheet } from "react-native";
 import FooterState from "./refreshState";
 import RefreshState from "./refreshState";
 import ChatRefreshFooter from "./chatRefreshFooter";
+import RefreshFooter from "./refreshFooter";
 
 interface Props {
   enableLoadMore?: boolean;
@@ -122,7 +123,12 @@ export default class RefreshFlatList extends Component<Props, State> {
   }
 
   renderFooter = () => {
-    return (<ChatRefreshFooter/>);
+    return (<RefreshFooter
+      loadingState={this.state.footerState}
+      onRetryLoading={() => {
+        this.beginFooterRefresh();
+      }}
+    />);
   }
 
   scrollToEnd(param) {
@@ -130,7 +136,7 @@ export default class RefreshFlatList extends Component<Props, State> {
   }
 
   scrollToIndex(index) {
-    this.flatList!.scrollToIndex({index});
+    this.flatList!.scrollToIndex({ index });
   }
 
 }
