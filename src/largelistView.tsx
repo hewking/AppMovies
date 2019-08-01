@@ -9,6 +9,7 @@ interface State {
 export default class LargeListScreen extends Component<any, State> {
 
     private mPage = 0;
+    private flatList: RefreshFlatList;
 
     constructor(props: any) {
         super(props);
@@ -20,18 +21,29 @@ export default class LargeListScreen extends Component<any, State> {
     render() {
         return (<View style={styles.container}>
             <RefreshFlatList
+                ref={ref => {
+                    this.flatList = ref;
+                }}
                 style={styles.list}
                 data={this.state.datas}
                 enableLoadMore={true}
                 onFooterRefresh={this.loadMore}
                 onHeadRefresh={this.refresh}
                 renderItem={this.renderItem}
+                onScroll={this.handleOnScroll}
             />
         </View>);
     }
 
     componentDidMount() {
         this.refresh();
+    }
+
+    private handleOnScroll = (event: any) => {
+        if (event.nativeEvent.contentOffset.y > this.props.scrollToBottomOffset!) {
+            
+        } else {
+        }
     }
 
     private renderItem = ({ item }: { item: string }) => {
@@ -43,7 +55,7 @@ export default class LargeListScreen extends Component<any, State> {
     private createDatas = () => {
         const items: string[] = [];
         for (let i = 0; i < 20; i++) {
-            items.push(`text ${this.mPage * 10 + i}`);
+            items.push(`text ${this.mPage * 20 + i}`);
         }
         return items;
     };
@@ -53,7 +65,10 @@ export default class LargeListScreen extends Component<any, State> {
         setTimeout(() => {
             this.setState(prevState => ({
                 datas: prevState.datas.concat(this.createDatas())
-            }));
+            }), () => {
+                this.mPage++;
+                this.flatList.endRefreshing();
+            });
         }, 1000);
     }
 

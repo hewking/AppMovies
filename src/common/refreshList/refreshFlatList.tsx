@@ -44,6 +44,7 @@ export default class RefreshFlatList extends Component<Props, State> {
         onEndReached={this.beginFooterRefresh}
         onEndReachedThreshold={0.1}
         ListFooterComponent={this.renderFooter}
+        ListHeaderComponent={this.renderHeader}
         ref={(list) => this.flatList = list}
         data={this.props.data}
         renderItem={this.props.renderItem}
@@ -125,6 +126,15 @@ export default class RefreshFlatList extends Component<Props, State> {
   renderFooter = () => {
     return (<RefreshFooter
       loadingState={this.state.footerState}
+      onRetryLoading={() => {
+        this.beginFooterRefresh();
+      }}
+    />);
+  }
+
+  renderHeader = () => {
+    return (<RefreshFooter
+      loadingState={RefreshState.Refreshing}
       onRetryLoading={() => {
         this.beginFooterRefresh();
       }}
