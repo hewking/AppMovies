@@ -3,6 +3,7 @@ package com.appmovies;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.shahenlibrary.RNVideoProcessingPackage;
 import com.bolan9999.SpringScrollViewPackage;
 import com.horcrux.svg.SvgPackage;
 import com.zmxv.RNSound.RNSoundPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNVideoProcessingPackage(),
             new SpringScrollViewPackage(),
             new RNGestureHandlerPackage(),
             new SvgPackage(),
