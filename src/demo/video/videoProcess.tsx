@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, Button, CameraRoll, Platform } from 'react-native';
 import { ProcessingManager } from 'react-native-video-processing';
+import RNFS from 'react-native-fs';
 
 export default class VideoProcess extends Component {
 
@@ -74,9 +75,7 @@ export default class VideoProcess extends Component {
 
     printInfo = async () => {
         const source = 'file:///storage/emulated/0/JChatDemo/recvFiles/3494067369.mp4';
-        const info = await ProcessingManager.getVideoInfo(source);
-        console.log(JSON.stringify(info));
-
+        this.info(source);
 
     }
 
@@ -84,6 +83,8 @@ export default class VideoProcess extends Component {
         const info = await ProcessingManager.getVideoInfo(source);
         console.log(JSON.stringify(info));
 
+        const file = await RNFS.stat(source);
+        console.log(JSON.stringify(file));
 
     }
 
