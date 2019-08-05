@@ -18,6 +18,7 @@ export default class DemoListScreen extends Component {
             { key: 'CircularProgress', id: 9, route: 'CircularProgress' },
             { key: 'CircularDemo2', id: 10, route: 'CircularDemo2' },
             { key: 'LargeListScreen', id: 11, route: 'LargeListScreen' },
+            { key: 'VideoProcess', id: 12, route: 'VideoProcess' },
         ]
     }
 

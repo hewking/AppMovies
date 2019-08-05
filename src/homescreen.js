@@ -17,6 +17,7 @@ import SvgDemo from './demo/svg';
 import CircularProgress from './demo/circularProgress'
 import CircularDemo2 from './demo/circular2';
 import LargeListScreen from './largelistView';
+import VideoProcess from './demo/video/videoProcess';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -74,7 +75,8 @@ const AppNavigator = createStackNavigator({
   SvgDemo,
   CircularProgress,
   CircularDemo2,
-  LargeListScreen
+  LargeListScreen,
+  VideoProcess
   // StickerCategory,
 
 });
