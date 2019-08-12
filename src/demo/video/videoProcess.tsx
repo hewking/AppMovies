@@ -74,7 +74,7 @@ export default class VideoProcess extends Component {
     }
 
     printInfo = async () => {
-        const source = 'file:///storage/emulated/0/JChatDemo/recvFiles/3494067369.mp4';
+        const source = 'file:///storage/emulated/0/DCIM/Camera/20190726_143243.mp4';
         this.info(source);
 
     }
@@ -89,16 +89,16 @@ export default class VideoProcess extends Component {
     }
 
     compressVideo = async () => {
-        const source = 'file:///storage/emulated/0/JChatDemo/recvFiles/3494067369.mp4';
+        const source = 'file:///storage/emulated/0/DCIM/Camera/20190726_143243.mp4';
 
         const options = {
-            width: 720,
-            height: 1280,
+            width: 1080,
+            height: 1920,
             bitrateMultiplier: 3,
             saveToCameraRoll: true, // default is false, iOS only
             saveWithCurrentDate: true, // default is false, iOS only
             minimumBitrate: 300000,
-            removeAudio: true, // default is false
+            removeAudio: false, // default is false
         };
         // this.videoPlayerRef.compress(options)
         //     .then((newSource) => console.log(newSource))

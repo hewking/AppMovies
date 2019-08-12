@@ -8,3 +8,4 @@ let arr = [
 arr.splice(arr.findIndex(v => v.id === 8), 1);
 
 console.log(arr)
+
