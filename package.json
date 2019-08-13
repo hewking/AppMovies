@@ -12,6 +12,7 @@
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.60.0",
     "faker": "^4.1.0",
+    "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-native": "0.59.0",
     "react-native-audio": "^4.3.0",
