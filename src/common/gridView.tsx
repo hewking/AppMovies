@@ -5,7 +5,7 @@ interface Props {
     style: StyleProp<any>;
     data: any[];
     numColumns: number;
-    renderItem: (item: any) => React.ReactElement;
+    renderItem: (item: any, index: number) => React.ReactElement;
     keyExtractor: (item: any) => string;
 }
 
@@ -22,7 +22,7 @@ export default class GridView extends Component<Props> {
             for (let j = 0; j < numColumns; j++) {
                 startIndex = j + i * numColumns;
                 if (startIndex < data.length) {
-                    const child = renderItem(data[startIndex]);
+                    const child = renderItem(data[startIndex], startIndex);
                     itemContainer.push(child);
                 } else {
                     break;
@@ -33,7 +33,7 @@ export default class GridView extends Component<Props> {
         }
 
         return (
-            <View style={[{ flex: 1, },style]}>
+            <View style={[{ flex: 1, }, style]}>
                 {itemContainers}
             </View>
         );
@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "flex-start",
         flexDirection: "row",
-      }
+    }
 });

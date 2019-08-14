@@ -41,14 +41,14 @@ export default class StickerManager {
             const stickerArr = Array.from(value).map(item => (Object.assign(item, { category: key })));
             const pageCount = Math.ceil(stickerArr.length / PAGE_SIZE);
             if (stickerArr.length < pageCount * PAGE_SIZE) {
-              const gap = pageCount * PAGE_SIZE - stickerArr.length;
-              for (let j = 0; j < gap; j++) {
-                stickerArr.push({
-                  name: PlaceholderItem,
-                  category: key,
-                  resource: null,
-                });
-              }
+                const gap = pageCount * PAGE_SIZE - stickerArr.length;
+                for (let j = 0; j < gap; j++) {
+                    stickerArr.push({
+                        name: PlaceholderItem,
+                        category: key,
+                        resource: key + - (j + 1),
+                    });
+                }
             }
 
             const size = Math.ceil(stickerArr.length / PAGE_SIZE);
@@ -163,7 +163,7 @@ export default class StickerManager {
 
     public getCategoryOrderByIndex(index: number): number {
         let tmp = 0;
-        for (let i = 0 ; i < this.stickerCategories.length; i ++) {
+        for (let i = 0; i < this.stickerCategories.length; i++) {
             if (this.stickerCategories[i].checkInCategory(index)) {
                 return i;
             } else {

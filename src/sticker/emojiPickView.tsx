@@ -124,17 +124,20 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     );
   }
 
-  private renderItem = (item) => {
+  private renderItem = (item, index: number) => {
+    console.debug('renderItem ',item, index);
     const { name, resource } = item;
     const style = {
       width: this.props.itemSize,
       height: this.props.itemSize,
     };
     if (name === this.PlaceholderItem) {
-      return <View style={style} />;
+      return <View style={style} key={resource} />;
     }
     return (
-      <TouchableOpacity onPress={this.clickEmoji.bind(this, item)}>
+      <TouchableOpacity onPress={this.clickEmoji.bind(this, item)}
+        key={name}
+      >
         <View style={[styles.itemview, style, { backgroundColor: 'skyblue' }]}>
           <Image style={styles.icon} source={resource} />
         </View>
