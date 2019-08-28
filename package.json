@@ -19,15 +19,15 @@
     "react-native-fs": "^2.14.1",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-largelist-v3": "^3.0.14",
+    "react-native-pure-navigation-bar": "^1.4.7",
     "react-native-root-modal": "^3.1.2",
+    "react-native-root-siblings": "^3.1.7",
     "react-native-sound": "^0.11.0",
     "react-native-spring-scrollview": "^2.0.22",
     "react-native-svg": "^9.5.3",
     "react-native-video-processing": "^1.20.0",
     "react-navigation": "^3.3.2",
-    "typescript": "^3.5.3",
-    "react-native-root-siblings": "^3.1.7",
-    "react-native-pure-navigation-bar": "^1.4.7"
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",

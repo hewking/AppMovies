@@ -32,6 +32,9 @@ class HomeScreen extends React.Component {
           url: 'www.baidu.com',
           title: '这个杀手不太冷',
         })} />
+        <Button onPress={() => {
+          // 打开相册
+        }}/>
         <AnimatedScreen style={{ width: 250, height: 50, backgroundColor: 'skyblue' }}>
           <Button title='搞一下动画' onPress={() => this.props.navigation.navigate('Animated')} />
           <Text>透明度会变吗</Text>

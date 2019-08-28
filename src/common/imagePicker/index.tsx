@@ -17,8 +17,8 @@ import PreviewMultiView from './previewMultiView';
  * callback: (data: any[]) => void. Donot use Alert.
  */
 
-export const getCamera = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: false });
-export const getVideo = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: true });
+// export const getCamera = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: false });
+// export const getVideo = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: true });
 export const getAlbum = (options) => showImagePicker(PageKeys.album_list, options);
 
 let sibling: any;
