@@ -1,7 +1,7 @@
 import Stickers from '../../res/Stickers/sticker';
 import StickerCategory, { StickerItem } from './stickerCategory';
 
-export const PAGE_COLUMNs = 4;
+export const PAGE_COLUMNs = 5;
 export const PAGE_ROWS = 2;
 export const PAGE_SIZE = PAGE_COLUMNs * PAGE_ROWS;
 const DeleteItem = '__emoji_pick_delete__';

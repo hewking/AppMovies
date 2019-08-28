@@ -43,7 +43,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      width: wScreen - 20,
+      width: wScreen,
       curIndex: 0,
       categoryCount: StickerManager.getInstance().getCagegorySizeByIndex(0),
     };
@@ -113,7 +113,7 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
     return (
       <GridView
         // key={index}
-        style={[{ marginHorizontal: marginH, marginVertical: marginV }
+        style={[{  marginVertical: marginV}
           , { backgroundColor: '#cacaca' }]}
         data={obj}
         renderItem={this.renderItem}
@@ -125,14 +125,14 @@ export default class EmojiPickView extends React.PureComponent<Props, State> {
   }
 
   private renderItem = (item, index: number) => {
-    console.debug('renderItem ',item, index);
+    console.debug('renderItem ', item, index);
     const { name, resource } = item;
     const style = {
-      width: this.props.itemSize,
+      width: this.state.width / 5,
       height: this.props.itemSize,
     };
     if (name === this.PlaceholderItem) {
-      return <View style={style} key={resource} />;
+      return null;
     }
     return (
       <TouchableOpacity onPress={this.clickEmoji.bind(this, item)}
