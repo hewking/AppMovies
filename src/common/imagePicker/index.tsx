@@ -2,7 +2,7 @@ import React from 'react';
 import RootSiblings from 'react-native-root-siblings';
 import PageKeys from './pageKeys';
 import PhotoModalPage from './photoModalPage';
-import CameraView from './cameraView';
+// import CameraView from './cameraView';
 import AlbumListView from './albumListView';
 import AlbumView from './albumView';
 import PreviewMultiView from './previewMultiView';
@@ -44,7 +44,7 @@ function showImagePicker(initialRouteName, options) {
 
 export {
   PhotoModalPage,
-  CameraView,
+  // CameraView,
   PreviewMultiView,
   AlbumListView,
   AlbumView,

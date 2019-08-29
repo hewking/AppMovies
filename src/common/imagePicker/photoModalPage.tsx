@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, BackHandler, InteractionManager, Platform } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import PageKeys from './pageKeys';
-import CameraView from './cameraView';
+// import CameraView from './cameraView';
 import AlbumListView from './albumListView';
 import AlbumView from './albumView';
 import PreviewMultiView from './previewMultiView';
@@ -39,7 +39,7 @@ export default class PhotoModalPage extends React.PureComponent<any, any> {
       }
     };
     const allscenes = {
-      [PageKeys.camera]: CameraView,
+      // [PageKeys.camera]: CameraView,
       [PageKeys.album_list]: AlbumListView,
       [PageKeys.album_view]: AlbumView,
       [PageKeys.preview]: PreviewMultiView,
