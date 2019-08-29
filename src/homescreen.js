@@ -18,7 +18,7 @@ import CircularProgress from './demo/circularProgress'
 import CircularDemo2 from './demo/circular2';
 import LargeListScreen from './largelistView';
 import VideoProcess from './demo/video/videoProcess';
-import {getAlbum} from './common/imagePicker';
+import { getAlbum } from './common/imagePicker';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -36,7 +36,7 @@ class HomeScreen extends React.Component {
         <Button onPress={() => {
           // 打开相册
           this._openImagePicker();
-        }} title='打开相册'/>
+        }} title='打开相册' />
         <AnimatedScreen style={{ width: 250, height: 50, backgroundColor: 'skyblue' }}>
           <Button title='搞一下动画' onPress={() => this.props.navigation.navigate('Animated')} />
           <Text>透明度会变吗</Text>
@@ -61,9 +61,7 @@ class HomeScreen extends React.Component {
   }
 
   _openImagePicker = () => {
-    getAlbum({
-      
-    });
+    getAlbum({})
   }
 
 }

@@ -3,8 +3,8 @@ import { Alert, Dimensions, FlatList, Image, Platform, StyleSheet, Text, Touchab
 import NaviBar, { getSafeAreaInset } from 'react-native-pure-navigation-bar';
 import * as RNFS from 'react-native-fs';
 import PageKeys from './pageKeys';
-import * as ChatIcons from '@asset/chat';
-import { showShortToast } from '@utils/toast';
+// import * as ChatIcons from '@asset/chat';
+import { show } from '../../util/toast';
 
 export default class AlbumView extends React.PureComponent<any, any> {
   constructor(props) {
@@ -66,14 +66,14 @@ export default class AlbumView extends React.PureComponent<any, any> {
             style={{ width: edge, height: edge, overflow: 'hidden' }}
             resizeMode='cover'
           />
-          {
+          {/* {
             (item.type.search("video") !== -1)
             && <ChatIcons.IconAlbumVideo style={{
               position: 'absolute',
               left: 5,
               bottom: 5,
             }} />
-          }
+          } */}
           {hasIcon && (
             <View style={styles.selectView}>
               <View style={[styles.selectIcon, { backgroundColor }]}>
@@ -190,7 +190,7 @@ export default class AlbumView extends React.PureComponent<any, any> {
         selectedItems: [...selectedItems]
       });
     } else if (this.state.selectedItems.length >= this.props.maxSize) {
-      showShortToast(this.props.maxSizeChooseAlert(this.props.maxSize));
+      show(this.props.maxSizeChooseAlert(this.props.maxSize));
     } else {
       this.setState({
         selectedItems: [...this.state.selectedItems, itemuri]

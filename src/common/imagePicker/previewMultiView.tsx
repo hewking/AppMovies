@@ -1,7 +1,6 @@
 import React from 'react';
-import { Dimensions, Image, ScrollView, StyleSheet, View } from 'react-native';
+import { Dimensions, Image, ScrollView, StyleSheet, View,StatusBar } from 'react-native';
 import NaviBar, { DEFAULT_NAVBAR_HEIGHT, getSafeAreaInset } from 'react-native-pure-navigation-bar';
-import StatusBar from '@common/statusBar';
 
 export default class PreviewMultiView extends React.PureComponent<any, any> {
   constructor(props) {

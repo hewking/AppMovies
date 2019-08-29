@@ -22,6 +22,7 @@
     "react-native-pure-navigation-bar": "^1.4.7",
     "react-native-root-modal": "^3.1.2",
     "react-native-root-siblings": "^3.1.7",
+    "react-native-root-toast": "^3.1.2",
     "react-native-sound": "^0.11.0",
     "react-native-spring-scrollview": "^2.0.22",
     "react-native-svg": "^9.5.3",
