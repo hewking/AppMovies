@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import MeasureText from 'react-native-measure-text';
+import { number } from 'prop-types';
 
 const texts = [
     'This is an example',
@@ -9,6 +10,11 @@ const texts = [
 const width = 250;
 const fontSize = 15;
 const fontFamily = 'Arvo';
+
+export interface MeasureHeight {
+    height: number;
+    layoutHeight: number;
+}
 
 export default class MeasureTextScreen extends Component {
 
@@ -24,6 +30,7 @@ export default class MeasureTextScreen extends Component {
             fontFamily /* fontFamily is optional! */,
             fontWeight: 'normal',
         });
+        const measuredHeights = heights.map
         this.setState({ heights });
     }
 
@@ -38,7 +45,10 @@ export default class MeasureTextScreen extends Component {
                         width,
                         fontSize,
                         fontFamily,
-                        height: heights[i],
+                        // height: heights[i],
+                    }}
+                    onLayout={(event) => {
+                        event.nativeEvent.layout.height;
                     }}
                 >
                     {text + ' height: ' + heights[i]}
