@@ -6,7 +6,7 @@ const texts = [
     'This is an example',
     'This is the second line'
 ];
-const width = 100;
+const width = 250;
 const fontSize = 15;
 const fontFamily = 'Arvo';
 
@@ -17,11 +17,12 @@ export default class MeasureTextScreen extends Component {
     }
 
     async componentDidMount() {
-        const heights = await MeasureText.heights({
+        const heights = await MeasureText.measure({
             texts, /* texts to measure */
             width, /* container width */
             fontSize,
-            fontFamily /* fontFamily is optional! */
+            fontFamily /* fontFamily is optional! */,
+            fontWeight: 'normal',
         });
         this.setState({ heights });
     }
