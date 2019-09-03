@@ -18,6 +18,7 @@ import CircularProgress from './demo/circularProgress'
 import CircularDemo2 from './demo/circular2';
 import LargeListScreen from './largelistView';
 import VideoProcess from './demo/video/videoProcess';
+import MeasureText from './demo/text/measureTextScreen';
 import { getAlbum } from './common/imagePicker';
 class HomeScreen extends React.Component {
 
@@ -85,7 +86,8 @@ const AppNavigator = createStackNavigator({
   CircularProgress,
   CircularDemo2,
   LargeListScreen,
-  VideoProcess
+  VideoProcess,
+  MeasureText
   // StickerCategory,
 
 });

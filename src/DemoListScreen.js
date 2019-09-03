@@ -19,6 +19,7 @@ export default class DemoListScreen extends Component {
             { key: 'CircularDemo2', id: 10, route: 'CircularDemo2' },
             { key: 'LargeListScreen', id: 11, route: 'LargeListScreen' },
             { key: 'VideoProcess', id: 12, route: 'VideoProcess' },
+            { key: 'MeasureText', id: 13, route: 'MeasureText' },
         ]
     }
 
