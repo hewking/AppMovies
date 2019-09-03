@@ -3,6 +3,7 @@ package com.appmovies;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.github.airamrguez.RNMeasureTextPackage;
 import com.rnfs.RNFSPackage;
 import com.shahenlibrary.RNVideoProcessingPackage;
 import com.bolan9999.SpringScrollViewPackage;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNMeasureTextPackage(),
             new RNFSPackage(),
             new RNVideoProcessingPackage(),
             new SpringScrollViewPackage(),
