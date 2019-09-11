@@ -6,6 +6,7 @@ import PageKeys from './pageKeys';
 import AlbumListView from './albumListView';
 import AlbumView from './albumView';
 import PreviewMultiView from './previewMultiView';
+import { AlbumPickerView } from '.';
 
 export default class PhotoModalPage extends React.PureComponent<any, any> {
   static defaultProps = {
@@ -43,6 +44,7 @@ export default class PhotoModalPage extends React.PureComponent<any, any> {
       [PageKeys.album_list]: AlbumListView,
       [PageKeys.album_view]: AlbumView,
       [PageKeys.preview]: PreviewMultiView,
+      [PageKeys.album_picker]: AlbumPickerView,
     };
     // tslint:disable-next-line: max-classes-per-file
     const withUnwrap = (WrappedComponent) => class extends React.PureComponent<any, any> {

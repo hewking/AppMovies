@@ -19,7 +19,7 @@ import CircularDemo2 from './demo/circular2';
 import LargeListScreen from './largelistView';
 import VideoProcess from './demo/video/videoProcess';
 import MeasureText from './demo/text/measureTextScreen';
-import { getAlbum } from './common/imagePicker';
+import { getAlbum, getAlbumPicker } from './common/imagePicker';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -38,6 +38,10 @@ class HomeScreen extends React.Component {
           // 打开相册
           this._openImagePicker();
         }} title='打开相册' />
+        <Button onPress={() => {
+          // 打开相册
+          getAlbumPicker();
+        }} title='打开相册选择' />
         <AnimatedScreen style={{ width: 250, height: 50, backgroundColor: 'skyblue' }}>
           <Button title='搞一下动画' onPress={() => this.props.navigation.navigate('Animated')} />
           <Text>透明度会变吗</Text>
