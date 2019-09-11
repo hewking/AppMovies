@@ -3,4 +3,5 @@ export default {
     album_view: 'AlbumViewPage',
     album_list: 'AlbumListPage',
     camera: 'CameraViewPage',
+    album_picker: 'AlbumPickerView'
 };

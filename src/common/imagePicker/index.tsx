@@ -6,6 +6,7 @@ import PhotoModalPage from './photoModalPage';
 import AlbumListView from './albumListView';
 import AlbumView from './albumView';
 import PreviewMultiView from './previewMultiView';
+import AlbumPickerView from './albumPickerView';
 
 /**
  * --OPTIONS--
@@ -20,6 +21,7 @@ import PreviewMultiView from './previewMultiView';
 // export const getCamera = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: false });
 // export const getVideo = (options) => showImagePicker(PageKeys.camera, { ...options, isVideo: true });
 export const getAlbum = (options) => showImagePicker(PageKeys.album_list, options);
+export const getAlbumPicker = (options) => showImagePicker(PageKeys.album_picker, options);
 
 let sibling: any;
 
@@ -45,6 +47,7 @@ function showImagePicker(initialRouteName, options) {
 export {
   PhotoModalPage,
   // CameraView,
+  AlbumPickerView,
   PreviewMultiView,
   AlbumListView,
   AlbumView,
