@@ -7,13 +7,13 @@ const texts = [
     'This is an example',
     'This is the second line'
 ];
-const width = 250;
+const width = 100;
 const fontSize = 15;
-const fontFamily = 'Arvo';
+// const fontFamily = 'Arvo';
 
 export interface MeasureHeight {
-    height: number;
-    layoutHeight: number;
+    height?: number;
+    layoutHeight?: number;
 }
 
 export default class MeasureTextScreen extends Component {
@@ -27,10 +27,12 @@ export default class MeasureTextScreen extends Component {
             texts, /* texts to measure */
             width, /* container width */
             fontSize,
-            fontFamily /* fontFamily is optional! */,
-            fontWeight: 'normal',
+            // fontFamily /* fontFamily is optional! */,
+            // fontWeight: 'normal',
         });
-        const measuredHeights = heights.map
+        // const measuredHeights = heights.map((item: any) => ({
+        //     height: item,
+        // }));
         this.setState({ heights });
     }
 
@@ -44,14 +46,16 @@ export default class MeasureTextScreen extends Component {
                     style={{
                         width,
                         fontSize,
-                        fontFamily,
+                        // fontFamily,
+                        // fontWeight: 'normal',
                         // height: heights[i],
                     }}
                     onLayout={(event) => {
-                        event.nativeEvent.layout.height;
+                        const layoutHeight = event.nativeEvent.layout.height;
+                        console.debug('layoutHeight', layoutHeight,'height', heights[i]);
                     }}
                 >
-                    {text + ' height: ' + heights[i]}
+                    {text}
                 </Text>
             ))}
         </View>);
