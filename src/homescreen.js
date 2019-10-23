@@ -49,6 +49,7 @@ class HomeScreen extends React.Component {
           <Text>透明度会变吗</Text>
         </AnimatedScreen>
         <Button title='跳到demo列表' onPress={() => { this.props.navigation.navigate('DemoList') }} />
+        <Button title='老子是热更新来的' onPress={() => { this.props.navigation.navigate('DemoList') }} />
       </View>
     );
   }
