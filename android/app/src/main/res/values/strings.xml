@@ -1,4 +1,5 @@
 <resources>
+	<string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">_x5l8mLEyspIcautN1IqqDpeawNg9caef2c2-b44d-45fa-8bb4-53deca2ccf49</string>
     <string name="app_name">AppMovies</string>
         <string name="android_auto_update_download_progress">正在下载:%1$d%%</string>
 

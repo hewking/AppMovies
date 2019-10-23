@@ -49,6 +49,8 @@
 		FF3EC431AFA44B1FB0D4DBDE /* libRNVideoProcessing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E26975F4A1D943AD8C3C5C55 /* libRNVideoProcessing.a */; };
 		08DFCC3D57C849789B88541A /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B0486F02624E9A9905FF82 /* libRNFS.a */; };
 		96B722F307394206A4E6A59A /* libRNMeasureText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B07062B1A1B74E31836F6CF6 /* libRNMeasureText.a */; };
+		7A82FB8FF00B40F997630319 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAF038CB17D4DD1BD753AC5 /* libCodePush.a */; };
+		31EC892AE1E74FA0AC6DF048 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A5A1DBA0AA4F628FF2B4E1 /* libz.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,6 +376,9 @@
 		04B0486F02624E9A9905FF82 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		091849343B494710B79490C2 /* RNMeasureText.xcodeproj */ = {isa = PBXFileReference; name = "RNMeasureText.xcodeproj"; path = "../node_modules/react-native-measure-text/ios/RNMeasureText.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B07062B1A1B74E31836F6CF6 /* libRNMeasureText.a */ = {isa = PBXFileReference; name = "libRNMeasureText.a"; path = "libRNMeasureText.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		AD338C77745E43768802E3E7 /* CodePush.xcodeproj */ = {isa = PBXFileReference; name = "CodePush.xcodeproj"; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		5AAF038CB17D4DD1BD753AC5 /* libCodePush.a */ = {isa = PBXFileReference; name = "libCodePush.a"; path = "libCodePush.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		17A5A1DBA0AA4F628FF2B4E1 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +415,8 @@
 				FF3EC431AFA44B1FB0D4DBDE /* libRNVideoProcessing.a in Frameworks */,
 				08DFCC3D57C849789B88541A /* libRNFS.a in Frameworks */,
 				96B722F307394206A4E6A59A /* libRNMeasureText.a in Frameworks */,
+				7A82FB8FF00B40F997630319 /* libCodePush.a in Frameworks */,
+				31EC892AE1E74FA0AC6DF048 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +571,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				17A5A1DBA0AA4F628FF2B4E1 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -609,6 +617,7 @@
 				4B896C3B8D2F4A3BBFFE6B4F /* RNVideoProcessing.xcodeproj */,
 				B2200E2C811248C385AE5CD6 /* RNFS.xcodeproj */,
 				091849343B494710B79490C2 /* RNMeasureText.xcodeproj */,
+				AD338C77745E43768802E3E7 /* CodePush.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1245,6 +1254,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1256,6 +1266,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Debug;
@@ -1286,6 +1297,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1297,6 +1309,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Release;
@@ -1327,6 +1340,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Debug;
@@ -1356,6 +1370,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Release;
@@ -1394,6 +1409,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1405,6 +1421,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Debug;
@@ -1443,6 +1460,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1454,6 +1472,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Release;
@@ -1491,6 +1510,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1502,6 +1522,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Debug;
@@ -1539,6 +1560,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1550,6 +1572,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-video-processing\ios\RNVideoProcessing/**",
 					"$(SRCROOT)\..\node_modules\react-native-fs/**",
 					"$(SRCROOT)\..\node_modules\react-native-measure-text\ios",
+					"$(SRCROOT)\..\node_modules\react-native-code-push\ios\CodePush/**",
 				);
 			};
 			name = Release;
