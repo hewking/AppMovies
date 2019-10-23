@@ -21,6 +21,7 @@ import VideoProcess from './demo/video/videoProcess';
 import MeasureText from './demo/text/measureTextScreen';
 import { getAlbum, getAlbumPicker } from './common/imagePicker';
 import Keyboard from './demo/keyboard/keyboard';
+import codePush from "react-native-code-push";
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -57,6 +58,7 @@ class HomeScreen extends React.Component {
    */
   componentDidMount() {
     ToastAndroid.show('加载Home页面', ToastAndroid.SHORT)
+    codePush.sync()
   }
 
   /**
