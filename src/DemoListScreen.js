@@ -21,6 +21,7 @@ export default class DemoListScreen extends Component {
             { key: 'VideoProcess', id: 12, route: 'VideoProcess' },
             { key: 'MeasureText', id: 13, route: 'MeasureText' },
             { key: 'Keyboard', id: 14, route: 'Keyboard' },
+            { key: 'doubleDirectionList', id: 15, route: 'doubleDirectionList' },
         ]
     }
 
