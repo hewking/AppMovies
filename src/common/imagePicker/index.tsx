@@ -33,7 +33,6 @@ function showImagePicker(initialRouteName, options) {
     <PhotoModalPage
       initialRouteName={initialRouteName}
       onDestroy={() => {
-
         if (sibling) {
           sibling.destroy();
         }

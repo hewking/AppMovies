@@ -26,10 +26,12 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+          <intent-filter>
+              <action android:name="android.intent.action.VIEW" />
+          </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
 
-// 添加fileProvider配置代码
         <provider
             android:name=".android_upgrade.FileProviderAdapter"
             android:authorities="${applicationId}.updateFileProvider"
@@ -39,8 +41,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/update_file_provider" />
         </provider>
-     
-        // 添加Service代码
+
         <service
             android:name=".android_upgrade.DownloadService"
             android:exported="true" />
