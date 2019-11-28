@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, Button, CameraRoll, Platform } from 'react-native';
-import { ProcessingManager } from 'react-native-video-processing';
+// import { ProcessingManager } from 'react-native-video-processing';
 import RNFS from 'react-native-fs';
 
 export default class VideoProcess extends Component {
@@ -80,8 +80,8 @@ export default class VideoProcess extends Component {
     }
 
     info = async (source: string) => {
-        const info = await ProcessingManager.getVideoInfo(source);
-        console.log(JSON.stringify(info));
+        // const info = await ProcessingManager.getVideoInfo(source);
+        // console.log(JSON.stringify(info));
 
         const file = await RNFS.stat(source);
         console.log(JSON.stringify(file));
@@ -104,9 +104,9 @@ export default class VideoProcess extends Component {
         //     .then((newSource) => console.log(newSource))
         //     .catch(console.warn);
 
-        const newSource = await ProcessingManager.compress(source, options);
-        console.log(newSource)
-        this.info(newSource.source);
+        // const newSource = await ProcessingManager.compress(source, options);
+        // console.log(newSource)
+        // this.info(newSource.source);
     }
 }
 
