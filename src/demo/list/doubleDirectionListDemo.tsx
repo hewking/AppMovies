@@ -21,17 +21,11 @@ import {
   ActivityIndicator
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-import rnTextSize, { TSFontSpecs } from 'react-native-text-size'
+// import rnTextSize, { TSFontSpecs } from 'react-native-text-size'
+// import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-class App extends React.PureComponent {
+class App extends React.PureComponent<any, any> {
   _flatList = null;
   maxIndex = 50;
   keepFlatListPositionData = [];
@@ -39,9 +33,9 @@ class App extends React.PureComponent {
   lastScrollPosition = 0;
 
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
-    var data = [];
+    var data: any[] = [];
     for (var i = 0; i < this.maxIndex; i++) {
       data.push({ index: i, text: "asfdsf ddddddddddd Index" + i });
     }
@@ -59,7 +53,7 @@ class App extends React.PureComponent {
     }, 1000);
   }
 
-  setIsLoadPrev = (val) => {
+  setIsLoadPrev = (val: any) => {
     if (val != this.state.isLoadingPrev) {
       this.setState({
         isLoadingPrev: val
@@ -67,7 +61,7 @@ class App extends React.PureComponent {
     }
   }
 
-  setIsLoadLast = (val) => {
+  setIsLoadLast = (val: any) => {
     if (val != this.state.isLoadingLast) {
       this.setState({
         isLoadingLast: val
@@ -232,11 +226,11 @@ class App extends React.PureComponent {
   }
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
+// const styles = StyleSheet.create({
+//   scrollView: {
+//     backgroundColor: Colors.lighter,
+//   },
 
-});
+// });
 
 export default App;
