@@ -20,6 +20,7 @@ export default class DemoListScreen extends Component {
             { key: 'LargeListScreen', id: 11, route: 'LargeListScreen' },
             { key: 'VideoProcess', id: 12, route: 'VideoProcess' },
             { key: 'MeasureText', id: 13, route: 'MeasureText' },
+            { key: 'Keyboard', id: 14, route: 'Keyboard' },
         ]
     }
 

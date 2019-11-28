@@ -20,6 +20,7 @@ import LargeListScreen from './largelistView';
 import VideoProcess from './demo/video/videoProcess';
 import MeasureText from './demo/text/measureTextScreen';
 import { getAlbum, getAlbumPicker } from './common/imagePicker';
+import Keyboard from './demo/keyboard/keyboard';
 class HomeScreen extends React.Component {
 
   navigationOptions = ({ navigation }) => {
@@ -91,7 +92,8 @@ const AppNavigator = createStackNavigator({
   CircularDemo2,
   LargeListScreen,
   VideoProcess,
-  MeasureText
+  MeasureText,
+  Keyboard,
   // StickerCategory,
 
 });

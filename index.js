@@ -8,6 +8,6 @@ import {name as appName} from './app.json';
 
 import AppContainer from './src/homescreen'
 // import AppContainer from './src/DetailScreen'
-import Main from './src/MainScreen'
+import Main from './src/demo/keyboard/keyboard'
 
 AppRegistry.registerComponent(appName, () => Main);
