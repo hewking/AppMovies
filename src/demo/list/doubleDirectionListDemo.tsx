@@ -53,7 +53,7 @@ class App extends React.PureComponent<any, any> {
     }, 1000);
   }
 
-  setIsLoadPrev = (val: any) => {
+  setIsLoadPrev = (val: boolean) => {
     if (val != this.state.isLoadingPrev) {
       this.setState({
         isLoadingPrev: val
@@ -61,7 +61,7 @@ class App extends React.PureComponent<any, any> {
     }
   }
 
-  setIsLoadLast = (val: any) => {
+  setIsLoadLast = (val: boolean) => {
     if (val != this.state.isLoadingLast) {
       this.setState({
         isLoadingLast: val
@@ -79,7 +79,7 @@ class App extends React.PureComponent<any, any> {
 
   loadPrevDataInner = async () => {
     let newData = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 100; i++) {
       this.maxIndex++;
       var item = { index: this.maxIndex, text: "Important: KeyboardIndex" + this.maxIndex };
       newData.push(item);
@@ -93,7 +93,7 @@ class App extends React.PureComponent<any, any> {
 
   loadLastDataInner = async () => {
     let newData = [];
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 100; i++) {
       this.maxIndex++;
       var item = { index: this.maxIndex, text: "Important: KeyboardIndex" + this.maxIndex };
       newData.push(item);

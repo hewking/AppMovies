@@ -7,5 +7,24 @@ let arr = [
 ]
 arr.splice(arr.findIndex(v => v.id === 8), 1);
 
-console.log(arr)
+// console.log(arr)
 
+
+let arr2 = arr;
+let arr3 = [1,2];
+
+// console.log(arr.indexOf(arr2));
+
+let arr4 = [1,2,3]
+let arr5 = [4,5]
+
+var tempArr = []
+
+tempArr.push(...arr5)
+tempArr = arr4.concat(tempArr)
+// arr4.forEach(item => {
+//     tempArr.unshift(item)
+// })
+
+
+console.log(tempArr);
