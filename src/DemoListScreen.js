@@ -22,6 +22,7 @@ export default class DemoListScreen extends Component {
             { key: 'MeasureText', id: 13, route: 'MeasureText' },
             { key: 'Keyboard', id: 14, route: 'Keyboard' },
             { key: 'doubleDirectionList', id: 15, route: 'doubleDirectionList' },
+            { key: 'TextHightLight', id: 16, route: 'TextHightLight' },
         ]
     }
 

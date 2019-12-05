@@ -22,7 +22,7 @@ import MeasureText from './demo/text/measureTextScreen';
 import { getAlbum, getAlbumPicker } from './common/imagePicker';
 import Keyboard from './demo/keyboard/keyboard';
 import DoubleDirectionScreen from './demo/list/doubleDirectionListDemo';
-
+import TextHightLight from './demo/text/textHighLight';
 
 class HomeScreen extends React.Component {
 
@@ -100,6 +100,7 @@ const AppNavigator = createStackNavigator({
   MeasureText,
   Keyboard,
   doubleDirectionList:DoubleDirectionScreen,
+  TextHightLight,
   // StickerCategory,
 
 });
