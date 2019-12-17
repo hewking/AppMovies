@@ -27,4 +27,8 @@ tempArr = arr4.concat(tempArr)
 // })
 
 
+
+const jsonObj = JSON.parse('');
+
 console.log(tempArr);
+console.log(jsonObj);

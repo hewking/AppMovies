@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextStyle } from 'react-native';
-import {findAll} from 'highlight-words-core';
+import { findAll } from 'highlight-words-core';
 
 
 interface Props {
