@@ -32,4 +32,4 @@
     return res;
  }
 
- console.log(pureNumber(10000000));
+ console.log(pureNumber(100));
