@@ -18,7 +18,7 @@
     "react-native": "0.59.0",
     "react-native-audio": "^4.3.0",
     "react-native-fs": "^2.14.1",
-    "react-native-gesture-handler": "^1.1.0",
+    "react-native-gesture-handler": "^1.6.1",
     "react-native-largelist-v3": "^3.0.14",
     "react-native-measure-text": "^1.0.0-alpha.2",
     "react-native-pure-navigation-bar": "^1.4.7",
