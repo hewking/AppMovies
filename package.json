@@ -32,8 +32,8 @@
     "typescript": "^3.5.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
-    "@babel/runtime": "^7.3.4",
+    "@babel/core": "^7.10.2",
+    "@babel/runtime": "^7.10.2",
     "@types/highlight-words-core": "^1.2.0",
     "babel-jest": "^24.5.0",
     "jest": "^24.5.0",
