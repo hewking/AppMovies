@@ -40,8 +40,8 @@
     "@babel/core": "^7.3.4",
     "@babel/runtime": "^7.3.4",
     "@types/highlight-words-core": "^1.2.0",
-    "babel-jest": "^24.5.0",
-    "jest": "^24.5.0",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.53.1",
     "react-test-renderer": "16.8.3"
   },
